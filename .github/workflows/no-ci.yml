@@ -4,11 +4,11 @@ on:
     push:
       branches:
         - master
-      paths:
+      paths-ignore:
         - .github/actions
         - "README.md"
     pull_request:
-      paths:
+      paths-ignore:
         - .github/actions
         - "README.md"
 
