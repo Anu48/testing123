@@ -1,30 +1,28 @@
-name: TESTING CI
+name: Testing NO-CI
 # If you update paths, make sure to update them in e2e-test.yml and no-ci.yml as well
 on:
-    push:
-      branches:
-        - master
-      paths-ignore:
-        - .github/actions
-        - "README.md"
-    pull_request:
-      paths-ignore:
-        - .github/actions
-        - "README.md"
+  push:
+    branches:
+      - master
+    paths:
+      - .github/actions
+      - "README.md"
+  pull_request:
+    paths:
+      - .github/actions
+      - "README.md"
 
 permissions:
-    contents: read
-        
+  contents: read
+
 concurrency:
-    group: ${{ github.workflow_ref }}
-    cancel-in-progress: true
-        
+  group: ${{ github.workflow_ref }}
+  cancel-in-progress: true
+
 jobs:
-    test-run:
-      name: Test run
-      runs-on: ubuntu-latest
-      steps:
-        - name: Run
-          run: |
-            echo wee
-          shell: bash
+  test-and-coverage:
+    name: With ci
+    runs-on: ubuntu-latest-8cpu
+    steps:
+      - name: without ci
+        run: "false"
