@@ -12,11 +12,19 @@ on:
       - .github/actions
       - "README.md"
 
+permissions:
+   contents: read
+
+concurrency:
+   group: ${{ github.workflow_ref }}
+   cancel-in-progress: true
 
 jobs:
   test-run:
     name: Test run
-    runs-on: ubuntu-latest-8cpu
+    runs-on: ubuntu-latest
     steps:
       - name: Run
-        run: "whatever"
+        run: |
+         echo whatever
+        shell: bash
