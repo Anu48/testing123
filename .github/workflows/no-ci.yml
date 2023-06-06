@@ -1,0 +1,22 @@
+name: TESTING CI
+# If you update paths, make sure to update them in e2e-test.yml and no-ci.yml as well
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - .github/actions
+      - "README.md"
+  pull_request:
+    paths:
+      - .github/actions
+      - "README.md"
+
+
+jobs:
+  test-run:
+    name: Test run
+    runs-on: ubuntu-latest-8cpu
+    steps:
+      - name: Run
+        run: "whatever"
