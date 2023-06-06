@@ -5,12 +5,10 @@ on:
     branches:
       - master
     paths-ignore:
-      - .github/actions
-      - "README.md"
+      - "**/README.md"
   pull_request:
     paths-ignore:
-      - .github/actions
-      - "README.md"
+      - "**/README.md"
 
 permissions:
   contents: read
