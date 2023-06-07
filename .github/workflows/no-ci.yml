@@ -1,0 +1,24 @@
+name: Testing CI
+# If you update paths, make sure to update them in e2e-test.yml and no-ci.yml as well
+on:
+  push:
+    paths-ignore:
+      - '*.md'
+  pull_request:
+    paths-ignore:
+      - '*.md'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow_ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-and-coverage:
+    name: With no-ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: with ci
+        run: "true"
